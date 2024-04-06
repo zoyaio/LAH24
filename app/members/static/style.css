@@ -1,0 +1,40 @@
+h2 {
+    font-family: Georgia;
+}
+
+.top {
+    background-color: lightblue;
+    border-radius: 25px;
+    padding-left: 11px;
+    padding-right: 11px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+    
+}
+
+a {
+    font-size: 18px;
+    
+}
+
+.class {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-radius: 25px;
+    padding: 5%;
+}
+
+.table {
+    background-color: lightblue;
+    border-radius: 25px;
+    margin: 2%;
+    padding: 11px;
+    width: 45%;
+}
+
+table {
+    justify-content: center;
+}
