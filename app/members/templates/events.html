@@ -30,7 +30,41 @@
         </div>
 
         <div class="map" id="map" style=" height: 200px; width: 400px;"></div>
-        <script src="{% static 'map.js' %}"></script>
+        <!-- <script src="{% static 'map.js' %}"></script> -->
+        
+        <script type="text/javascript"> 
+            // gets current position
+            var position = navigator.geolocation.getCurrentPosition(showPosition); 
+            
+            // inits map with current position of user
+            function showPosition(pos) {
+                var map = L.map('map').setView([0,0], 13);
+                // adds tile layer using open street map 
+                L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    maxZoom: 19,
+                    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+                }).addTo(map);
+
+                console.log("{{eureka_elms|escapejs}}");
+              var data = JSON.parse("{{eureka_elms|escapejs}}"); 
+              console.log(data);
+              const markers = []; 
+              for (let i = 0; i < 2; i++) {
+                markers[i] = L.marker([data[i].lat,data[i].long]).addTo(map);
+              }
+              console.log(markers);
+            
+              }
+            
+            
+              // adds a marker
+            // TODOS: highlight the specific marker the user is hovering over + 
+            // have an onclick thing 
+            // have an onclick thing 
+            
+              
+            //   var marker = L.marker([51.5, -0.09]).addTo(map);
+              </script>
         <div class="calendar">
             <h2>Calendar:</h2>
             <p>

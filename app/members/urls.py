@@ -4,5 +4,6 @@ from . import views
 urlpatterns = [
     path('members/', views.members, name='members'),
     path('events/', views.events, name="events"),
-    path('eureka/', views.eureka, name="eureka")
+    path('eureka/', views.eureka, name="eureka"),
+    path('landing/', views.send_dictionary, name="landing")
 ]
