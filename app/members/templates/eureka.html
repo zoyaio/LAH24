@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+{% load static %}
+{% load templates %}
+
+
 <html>
     <head>
         <meta charset="UTF-8" />
@@ -6,7 +10,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="description" content="" />
   <link rel="icon" href="favicon.png">
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="{% static 'style.css' %}">
         
       </head>
       <body>
@@ -14,10 +18,10 @@
     <div class="bar">
         <div class="logo">
             <!-- Replace 'logo.png' with the path to your logo -->
-            <a href="eureka.html"><img src="EUREKA!.png" alt="Logo" style="height: 70px;"></a>
+            <a href="/eureka.html"><img src="{% static 'imgs/EUREKA!.png'%}" alt="Logo" style="height: 70px;"></a>
         </div>
         <ul class="menu">
-            <li><a href="events.html">Find Eurekas</a></li>
+            <li><a href="{template 'events.html'}">Find Eurekas</a></li>
             <li><a href="pets.html">Pets</a></li>
             <li><a href="#">Friends</a></li>
         </ul>
@@ -105,12 +109,12 @@
                 <div class="flex-container">
                     <div class="flex-item">
                         <h2>Pet1</h2>
-                        <img src = "1.png" width="175" height="175", style="border-radius: 25%">
+                        <img src = "{% static 'imgs/1.png'%}" width="175" height="175", style="border-radius: 25%">
                         <p>NAME<br>text here</p>
                     </div>
                     <div class="flex-item">
                         <h2>Pet 2</h2>
-                        <img src = "2.png" width="175" height="175", style="border-radius: 25%">
+                        <img src = "{% static 'imgs/2.png'%}" width="175" height="175", style="border-radius: 25%">
                         <p>NAME<br>text here</p>
                     </div>
                     
