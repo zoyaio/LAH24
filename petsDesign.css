@@ -24,17 +24,12 @@ a {
 }
 
 .flex-item {
-    flex: 0 0 18%;
+    flex: 0 0 10%;
     background-color: lightblue;
     border-radius: 25px;
     margin: 2%;
     padding: 11px;
-    height: 200px;
-}
-
-.text-item {
-    display: flex;
-    border-radius: 25px;
+    height: 400px;
 }
 
 .class {
