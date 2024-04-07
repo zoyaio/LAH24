@@ -8,6 +8,7 @@ from .models import User
 
 from json import dumps
 
+PETS_TO_ID ={1: "Nature", 2: "Dessert", 3:"Coffee", 4:"Exercise"}
 def connect_to_mongodb():
     client = MongoClient('mongodb+srv://nottherealericl:r6SZdtENM5ms3TvP@cluster0.wnrccgr.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
     db = client['eureka']
@@ -19,8 +20,28 @@ def members(request):
 
 def eureka(request): 
   template = loader.get_template('eureka.html')
+  db = connect_to_mongodb()
+
+  eurekaDB = db.locations
+  eurekaDict = []
+  for entry in eurekaDB.find():
+      processed = dict((k,entry[k]) for k in 
+           ("id", "activity_name", "location_name", "address", "latitude", "longitude", "category") if k in entry)
+      processed["start_time"] = entry['start_time'].strftime("%Y-%m-%dT%H:%M")
+      processed["end_time"] = entry['end_time'].strftime("%Y-%m-%dT%H:%M")
+      processed["maps_link"] = 'https://www.google.com/maps/place/' + entry['address'].replace(" ", "+")
+      processed["rewarded_pet_type"] = PETS_TO_ID[entry["rewarded_pet_type_id"]]
+      eurekaDict.append(processed)
+
+#   eurekaDict = [{"id": 0, "lat": 0, "long":0}, {"id":1, "lat":1, "long":1} ]
+  eurekaJSON = dumps(eurekaDict)
+
+  context = {
+    'eureka_elms': eurekaJSON,
+    'eureka_dict': eurekaDict
+    }
   
-  return render(request, 'eureka.html') 
+  return HttpResponse(template.render(context, request))
 
 def send_dictionary(request): 
     # create data dictionary 
@@ -45,10 +66,11 @@ def events(request):
   eurekaDict = []
   for entry in eurekaDB.find():
       processed = dict((k,entry[k]) for k in 
-           ("id", "activity_name", "location_name", "address", "latitude", "longitude", "rewarded_pet_type_id", "category") if k in entry)
+           ("id", "activity_name", "location_name", "address", "latitude", "longitude", "category") if k in entry)
       processed["start_time"] = entry['start_time'].strftime("%Y-%m-%dT%H:%M")
       processed["end_time"] = entry['end_time'].strftime("%Y-%m-%dT%H:%M")
       processed["maps_link"] = 'https://www.google.com/maps/place/' + entry['address'].replace(" ", "+")
+      processed["rewarded_pet_type"] = PETS_TO_ID[entry["rewarded_pet_type_id"]]
       eurekaDict.append(processed)
 
 #   eurekaDict = [{"id": 0, "lat": 0, "long":0}, {"id":1, "lat":1, "long":1} ]

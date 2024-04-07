@@ -34,75 +34,28 @@
 
         <div class="dash"> 
             
-            <div class="table"> 
-                <h2> Eurekas Near You: </h2>
-                    <table style="width:100%">
-                        <tr>
-                          <th style="width:20%">Name</th>
-                          <th style="width:20%">Distance</th>
-                          <th style="width:20%">Type of Eureka</th>
-                          <th style="width:20%">Start time</th>
-                          <th style="width:20%">End time</th>
-                        </tr>
-                        <tr>
-                          <td>name #1</td>
-                          <td>distance #1</td>
-                          <td>type #1</td>
-                          <td>start time #1</td>
-                          <td>end time #1</td>
-                        </tr>
-                        <tr>
-                          <td>name #2</td>
-                          <td>distance #2</td>
-                          <td>type #2</td>
-                          <td>start time #2</td>
-                          <td>end time #2</td>
-                        </tr>
-                        <tr>
-                            <td>name #2</td>
-                            <td>distance #2</td>
-                            <td>type #2</td>
-                            <td>start time #2</td>
-                            <td>end time #2</td>
-                          </tr>
-                          <tr>
-                            <td>name #2</td>
-                            <td>distance #2</td>
-                            <td>type #2</td>
-                            <td>start time #2</td>
-                            <td>end time #2</td>
-                          </tr>
-                          <tr>
-                            <td>name #2</td>
-                            <td>distance #2</td>
-                            <td>type #2</td>
-                            <td>start time #2</td>
-                            <td>end time #2</td>
-                          </tr>
-                          <tr>
-                            <td>name #2</td>
-                            <td>distance #2</td>
-                            <td>type #2</td>
-                            <td>start time #2</td>
-                            <td>end time #2</td>
-                          </tr>
-                          <tr>
-                            <td>name #2</td>
-                            <td>distance #2</td>
-                            <td>type #2</td>
-                            <td>start time #2</td>
-                            <td>end time #2</td>
-                          </tr>
-                          <tr>
-                            <td>name #2</td>
-                            <td>distance #2</td>
-                            <td>type #2</td>
-                            <td>start time #2</td>
-                            <td>end time #2</td>
-                          </tr>
-                      </table>
-                </p>
-            </div>
+          <div class="table"> 
+            <h2> Eurekas Near You: </h2>
+                <table style="width:100%">
+                    <tr>
+                      <th style="width:20%">Name</th>
+                      <th style="width:20%">Distance</th>
+                      <th style="width:20%">Type of Eureka</th>
+                      <th style="width:20%">Start time</th>
+                      <th style="width:20%">End time</th>
+                    </tr>
+                    {% for x in eureka_dict %}
+                    <tr>
+                        <td> {{x.activity_name}} </td>
+                        <td> {{x.activity_name}} </td>
+                        <td> {{x.rewarded_pet_type}}</td>
+                        <td> {{x.start_time}} </td>
+                        <td> {{x.end_time}} </td> 
+                    </tr>
+                    {% endfor %}
+  
+            </p>
+        </div>
 
 
             <div class="pets clickable-div">
