@@ -53,7 +53,7 @@
                         <td> {{x.end_time}} </td> 
                     </tr>
                     {% endfor %}
-  
+  </table>
             </p>
         </div>
 
@@ -76,7 +76,7 @@
                         const clickableDivs = document.querySelectorAll(".clickable-div");
                         clickableDivs.forEach(div => {
                             div.addEventListener("click", function() {
-                                window.location.href = "pets.html"; // Change to the desired HTML file
+                                window.location.href = "/pets/"; // Change to the desired HTML file
                             });
                         });
                     });
@@ -85,9 +85,29 @@
               </div>
           </div>
 
-            <div class="friends">
+            <div class="friends clickable-div">
                 <h2> Friends: </h2>
-                <p> blah </p>
+              <div class="flex-container ">
+                  <div class="friends-item">
+                      <h2>@Meowmeow</h2>
+                      <img src = "{% static 'kit.jpg' %}" width="175" height="175", style="border-radius: 25%">
+                  </div>
+                  <div class="friends-item">
+                      <h2>@MrRaccoon</h2>
+                      <img src = "{% static 'raccoon.jpg' %}" width="175" height="175", style="border-radius: 25%">
+                  </div>
+                  <script>
+                    document.addEventListener("DOMContentLoaded", function() {
+                        const clickableDivs = document.querySelectorAll(".clickable-div");
+                        clickableDivs.forEach(div => {
+                            div.addEventListener("click", function() {
+                                window.location.href = "/friends"; // Change to the desired HTML file
+                            });
+                        });
+                    });
+                </script>
+                  
+              </div>
             </div>
 
             <div class="leader">
@@ -100,35 +120,31 @@
                     </tr>
                     
                     <tr>
-                        <td>#1</td>
-                        <td>Name</td>
-                        <td align="center">22</td>
-                        
-                      </tr>
-                      <tr>
-                        <td>#2</td>
-                        <td>Name</td>
-                        <td align="center">22</td>
-                        
-                      </tr>
-                      <tr>
-                        <td>#3</td>
-                        <td>Name</td>
-                        <td align="center">22</td>
-                        
-                      </tr>
-                      <tr>
-                        <td>#4</td>
-                        <td>Name</td>
-                        <td align="center">22</td>
-                        
-                      </tr>
-                      <tr>
-                        <td>#5</td>
-                        <td>Name</td>
-                        <td align="center">22</td>
-                        
-                      </tr>
+                      <td>1</td>
+                      <td>MrRaccoon</td>
+                      <td align="center">45</td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>cool_gamer</td>
+                      <td align="center">32</td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td>BANALUVR</td>
+                      <td align="center">27</td>
+                    </tr>
+                    <tr>
+                      <td>4</td>
+                      <td>techgeek</td>
+                      <td align="center">18</td>
+                    </tr>
+                    <tr>
+                      <td>5</td>
+                      <td>mastermind</td>
+                      <td align="center">50</td>
+                    </tr>
+                    
                   </table>
             </div>
             <footer>
