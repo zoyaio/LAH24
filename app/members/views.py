@@ -1,8 +1,17 @@
 from django.http import HttpResponse
 from django.template import loader 
-from django.shortcuts import render 
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from pymongo import MongoClient
+from .models import User
+
 from json import dumps
 
+def connect_to_mongodb():
+    client = MongoClient('mongodb+srv://nottherealericl:r6SZdtENM5ms3TvP@cluster0.wnrccgr.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
+    db = client['mydatabase']
+    return db
+  
 def members(request):
   template = loader.get_template('myfirst.html')
   return HttpResponse(template.render())
@@ -38,3 +47,31 @@ def events(request):
 
   return HttpResponse(template.render(context, request))
 #   return HttpResponse(template.render())
+
+
+def login(request):
+    if request.method == 'POST':
+        email = request.POST['email']
+        password = request.POST['password']
+        db = connect_to_mongodb()
+        user = db.users.find_one({'email': email, 'password': password})
+        if user:
+
+            return redirect('login')
+        else:
+            messages.error(request, 'Invalid email or password.')
+    return render(request, 'login.html')
+
+def signup(request):
+    if request.method == 'POST':
+        name = request.POST['name']
+        email = request.POST['email']
+        password = request.POST['password']
+        db = connect_to_mongodb()
+        if db.users.find_one({'email': email}):
+            messages.error(request, 'Email already exists.')
+        else:
+            db.users.insert_one({'name': name, 'email': email, 'password': password})
+            messages.success(request, 'Account created successfully.')
+            return redirect('login')
+    return render(request, 'signup.html')
