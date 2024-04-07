@@ -103,3 +103,12 @@ def eureka2(request, id):
     }
 
     return HttpResponse(template.render(context, request))
+
+def about(request):
+    return render(request,"about.html" )
+
+def friends(request):
+    return render(request,"friends.html" )
+
+def pets(request):
+    return render(request,"pets.html" )

@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load static %}
 <html>
     <head>
         <meta charset="UTF-8" />
@@ -6,101 +7,105 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="description" content="" />
   <link rel="icon" href="favicon.png">
-        <link rel="stylesheet" href="petsDesign.css">
+        <link rel="stylesheet" href="{% static 'petsDesign.css' %}">
         
       </head>
       <body>
         <div class="bar">
             <div class="logo">
                 <!-- Replace 'logo.png' with the path to your logo -->
-                <a href="eureka.html"><img src="EUREKA!.png" alt="Logo" style="height: 70px;"></a>
+                <a href="/eureka/"><img src="{% static 'EUREKA!.png' %}" alt="Logo" style="height: 70px;"></a>
             </div>
             <ul class="menu">
-                <li><a href="events.html">Find Eurekas</a></li>
-                <li><a href="pets.html">Pets</a></li>
-                <li><a href="#">Friends</a></li>
+              <li><a href="/about">About</a></li>
+                <li><a href="/events">Find Eurekas</a></li>
+                <li><a href="/pets">Pets</a></li>
+                <li><a href="/friends">Friends</a></li>
+                <div>
+                  <a href="/login"><img src="{% static 'pfp.png' %}" style="height:30px; border-radius:50%" ></a>
+                </div>
             </ul>
         </div>
     <br>
+    
 
         <div class="dash">
             <div class="flex-container">
-                <div class="flex-item">
-                    <h2>Pet1</h2>
-                    <img src = "1.png" width="175" height="175", style="border-radius: 25%">
-                    <p>NAME<br>text here</p>
+                <div class="flex-item unlocked">
+                    <h2>Natura</h2>
+                    <img src = "{% static '1.png' %}" width="100%" style="border-radius: 25%">
+                    <p>You discovered 5 nature related Eurekas!</p>
+                </div>
+                <div class="flex-item unlocked">
+                    <h2>Sucra</h2>
+                    <img src = "{% static '2.png' %}" width="100%", style="border-radius: 25%">
+                    <p>You discovered 5 dessert related Eurekas!</p>
                 </div>
                 <div class="flex-item">
-                    <h2>Pet 2</h2>
-                    <img src = "2.png" width="175" height="175", style="border-radius: 25%">
-                    <p>NAME<br>text here</p>
+                    <h2>Cappu</h2>
+                    <img src = "{% static '3.png' %}" width="100%", style="border-radius: 25%">
+                    <p>You discovered 5 coffee related Eurekas!</p>
                 </div>
                 <div class="flex-item">
-                    <h2>Pet 3</h2>
-                    <img src = "3.png" width="175" height="175", style="border-radius: 25%">
-                    <p>NAME<br>text here</p>
+                    <h2>Sprintro/h2>
+                    <img src = "{% static '4.png' %}" width="100%", style="border-radius: 25%">
+                    <p>You discovered 5 exercise related Eurekas!</p>
                 </div>
                 <div class="flex-item">
-                    <h2>Pet 4</h2>
-                    <img src = "4.png" width="175" height="175", style="border-radius: 25%">
-                    <p>BONKIE<br>The very coolest one.</p>
+                    <h2>Aphrodira</h2>
+                    <img src = "{% static '5.png' %}" width="100%", style="border-radius: 25%">
+                    <p> You discovered 5 beach related Eurekas!</p>
                 </div>
                 <div class="flex-item">
-                    <h2>Pet 5</h2>
-                    <img src = "5.png" width="175" height="175", style="border-radius: 25%">
-                    <p>NAME<br>text here</p>
+                    <h2>Crema</h2>
+                    <img src = "{% static '6.png' %}" width="100%", style="border-radius: 25%">
+                    <p> You discovered 5 ice cream related Eurekas!</p>
                 </div>
                 <div class="flex-item">
-                    <h2>Pet 6</h2>
-                    <img src = "6.png" width="175" height="175", style="border-radius: 25%">
-                    <p>NAME<br>text here</p>
+                    <h2>Scenpa</h2>
+                    <img src = "{% static '7.png' %}" width="100%", style="border-radius: 25%">
+                    <p> You discovered 5 scenic routes related Eurekas!</p>
                 </div>
                 <div class="flex-item">
-                    <h2>Pet 7</h2>
-                    <img src = "7.png" width="175" height="175", style="border-radius: 25%">
-                    <p>NAME<br>text here</p>
+                    <h2>Well Traveled!</h2>
+                    <img src = "{% static '8.png' %}" width="100%", style="border-radius: 25%">
+                    <p> You discovered 10 Eurekas!</p>
                 </div>
                 <div class="flex-item">
-                    <h2>Pet 8</h2>
-                    <img src = "8.png" width="175" height="175", style="border-radius: 25%">
-                    <p>NAME<br>text here</p>
+                    <h2>Pumpa</h2>
+                    <img src = "{% static '9.png' %}" width="100%", style="border-radius: 25%">
+                    <p> You discovered 5 fall related Eurekas! </p>
                 </div>
                 <div class="flex-item">
-                    <h2>Pet 9</h2>
-                    <img src = "9.png" width="175" height="175", style="border-radius: 25%">
-                    <p>NAME<br>text here</p>
+                    <h2>Quacka</h2>
+                    <img src = "{% static '10.png' %}" width="100%", style="border-radius: 25%">
+                    <p> You discovered 5 bird related Eurekas!</p>
                 </div>
                 <div class="flex-item">
-                    <h2>Pet 10</h2>
-                    <img src = "10.png" width="175" height="175", style="border-radius: 25%">
-                    <p>NAME<br>text here</p>
+                    <h2>Noel</h2>
+                    <img src = "{% static '11.png' %}" width="100%", style="border-radius: 25%">
+                    <p> You discovered 5 Christmas related Eurekas!</p>
                 </div>
                 <div class="flex-item">
-                    <h2>Pet 11</h2>
-                    <img src = "11.png" width="175" height="175", style="border-radius: 25%">
-                    <p>NAME<br>text here</p>
+                    <h2>Melody</h2>
+                    <img src = "{% static '12.png' %}" width="100%", style="border-radius: 25%">
+                    <p> You discovered 5 music related Eurekas!</p>
                 </div>
                 <div class="flex-item">
-                    <h2>Pet 12</h2>
-                    <img src = "12.png" width="175" height="175", style="border-radius: 25%">
-                    <p>NAME<br>text here</p>
+                    <h2>HACK!</h2>
+                    <img src = "{% static '13.png' %}" width="100%", style="border-radius: 25%">
+                    <p> You discovered 5 hackathon related Eurekas!</p>
                 </div>
                 <div class="flex-item">
-                    <h2>Pet 13</h2>
-                    <img src = "13.png" width="175" height="175", style="border-radius: 25%">
-                    <p>NAME<br>text here</p>
+                    <h2>boom</h2>
+                    <img src = "{% static '14.png' %}" width="100%", style="border-radius: 25%">
+                    <p> You discovered 5 zoo related Eurekas!</p>
                 </div>
                 <div class="flex-item">
-                    <h2>Pet 14</h2>
-                    <img src = "14.png" width="175" height="175", style="border-radius: 25%">
-                    <p>NAME<br>text here</p>
+                    <h2>Blubblub</h2>
+                    <img src = "{% static '15.png' %}" width="100%", style="border-radius: 25%">
+                    <p> You discovered 5 aquarium related Eurekas!</p>
                 </div>
-                <div class="flex-item">
-                    <h2>Pet 15</h2>
-                    <img src = "15.png" width="175" height="175", style="border-radius: 25%">
-                    <p>NAME<br>text here</p>
-                </div>
-        </div>
         
         </div>
       </body>
