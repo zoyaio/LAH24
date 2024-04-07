@@ -9,7 +9,7 @@ from json import dumps
 
 def connect_to_mongodb():
     client = MongoClient('mongodb+srv://nottherealericl:r6SZdtENM5ms3TvP@cluster0.wnrccgr.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
-    db = client['mydatabase']
+    db = client['eureka']
     return db
   
 def members(request):
@@ -57,7 +57,7 @@ def login(request):
         user = db.users.find_one({'email': email, 'password': password})
         if user:
 
-            return redirect('login')
+            return redirect('events')
         else:
             messages.error(request, 'Invalid email or password.')
     return render(request, 'login.html')
