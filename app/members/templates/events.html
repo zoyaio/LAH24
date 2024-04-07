@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+  <title>Events</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="" />
+  <link rel="icon" href="favicon.png">
+        <link rel="stylesheet" href="eventsDesign.css">
+        <div class="bar">
+            <div class="logo">
+                <!-- Replace 'logo.png' with the path to your logo -->
+                <a href="eureka.html"><img src="EUREKA!.png" alt="Logo" style="height: 70px;"></a>
+            </div>
+            <ul class="menu">
+                <li><a href="events.html">Find Eurekas</a></li>
+                <li><a href="pets.html">Pets</a></li>
+                <li><a href="#">Friends</a></li>
+            </ul>
+        </div>
+      </head>
+      <body>
+        <div class="eventTitle">
+            <h1> Events </h1>
+        </div>
+        <div class="map">
+            <h2>Map:</h2>
+            <p>
+                <map style="width:100%">
+                </map>
+            </p>
+        </div>
+
+        <script type="text/javascript"> 
+            // gets current position
+            var position = navigator.geolocation.getCurrentPosition(showPosition); 
+
+            // inits map with current position of user
+            function showPosition(pos) {
+                var map = L.map('map').setView([0,0], 13);
+                // adds tile layer using open street map 
+                L.tileLayer('https://tile.openstreetmap.org/%7Bz%7D/%7Bx%7D/%7By%7D.png', {
+                    maxZoom: 19,
+                    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+                }).addTo(map);
+
+                console.log("{{eureka_elms|escapejs}}");
+              var data = JSON.parse("{{eureka_elms|escapejs}}"); 
+              console.log(data);
+              const markers = []; 
+              for (let i = 0; i < 2; i++) {
+                markers[i] = L.marker([data[i].lat,data[i].long]).addTo(map);
+              }
+              console.log(markers);
+
+              }
+
+
+              // adds a marker
+            // TODOS: highlight the specific marker the user is hovering over + 
+            // have an onclick thing 
+            // have an onclick thing 
+
+
+            //   var marker = L.marker([51.5, -0.09]).addTo(map);
+              </script>
+
+        <div class="calendar">
+            <h2>Calendar:</h2>
+            <p>
+                <calendar style="width:100%">
+                </calendar>
+            </p>
+        </div>
+        <div class="post">
+            <h2>Post an event:</h2>
+            <p>
+                <post style="width:100%">
+                </post>
+            </p>
+        </div>
+      </body>
+</html>
