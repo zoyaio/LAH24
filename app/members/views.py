@@ -1,4 +1,5 @@
 from django.http import HttpResponse
+from django.utils.http import urlencode
 from django.template import loader 
 from django.shortcuts import render, redirect
 from django.contrib import messages
@@ -38,11 +39,24 @@ def send_dictionary(request):
 
 def events(request): 
   template = loader.get_template('events.html')
-  eurekaDict = [{"id": 0, "lat": 0, "long":0}, {"id":1, "lat":1, "long":1} ]
+  db = connect_to_mongodb()
+
+  eurekaDB = db.locations
+  eurekaDict = []
+  for entry in eurekaDB.find():
+      processed = dict((k,entry[k]) for k in 
+           ("id", "activity_name", "location_name", "address", "latitude", "longitude", "rewarded_pet_type_id", "category") if k in entry)
+      processed["start_time"] = entry['start_time'].strftime("%Y-%m-%dT%H:%M")
+      processed["end_time"] = entry['end_time'].strftime("%Y-%m-%dT%H:%M")
+      processed["maps_link"] = 'https://www.google.com/maps/place/' + entry['address'].replace(" ", "+")
+      eurekaDict.append(processed)
+
+#   eurekaDict = [{"id": 0, "lat": 0, "long":0}, {"id":1, "lat":1, "long":1} ]
   eurekaJSON = dumps(eurekaDict)
 
   context = {
-    'eureka_elms': eurekaJSON
+    'eureka_elms': eurekaJSON,
+    'eureka_dict': eurekaDict
     }
 
   return HttpResponse(template.render(context, request))
@@ -76,6 +90,19 @@ def signup(request):
             return redirect('login')
     return render(request, 'signup.html')
 
+#specific page
+def eureka2(request, id): 
+    template = loader.get_template('eureka_deets.html')
+    
+    eurekaDict = [{"id": 0, "lat": 0, "long":0}, {"id":1, "lat":1, "long":1} ]
+
+    eurekaJSON = dumps(eurekaDict)
+
+    context = {
+    'eureka_info': eurekaJSON
+    }
+
+    return HttpResponse(template.render(context, request))
 
 def about(request):
     return render(request,"about.html" )

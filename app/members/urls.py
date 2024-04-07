@@ -8,9 +8,8 @@ urlpatterns = [
     path('landing/', views.send_dictionary, name="landing"),
     path('login/', views.login, name='login'),
     path('signup/', views.signup, name='signup'),
+    path('events/<int:id>', views.eureka2, name="main"),
     path('about/', views.about, name='about'),
     path('friends/', views.friends, name='friends'),
-    path('pets/', views.pets, name='pets'),
-
-
+    path('pets/', views.pets, name='pets')
 ]
