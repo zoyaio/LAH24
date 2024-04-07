@@ -38,3 +38,10 @@ def events(request):
 
   return HttpResponse(template.render(context, request))
 #   return HttpResponse(template.render())
+
+
+def main(request): 
+  template = loader.get_template('main.html')
+  context = {
+    }
+  return HttpResponse(template.render(context, request))
