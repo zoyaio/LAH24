@@ -5,5 +5,7 @@ urlpatterns = [
     path('members/', views.members, name='members'),
     path('events/', views.events, name="events"),
     path('eureka/', views.eureka, name="eureka"),
-    path('main/', views.main, name="main")
+    path('landing/', views.send_dictionary, name="landing"),
+    path('login/', views.login, name='login'),
+    path('signup/', views.signup, name='signup'),
 ]
