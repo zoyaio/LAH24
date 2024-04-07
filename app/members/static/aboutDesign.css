@@ -1,12 +1,16 @@
-h2 {
-    font-family: sans-serif;
-    font-size: 44px;
-}
 p {
-    font-size: 22px;
+    font-family: sans-serif;
+    font-size: 20px;
+}
+
+h2 {
     font-family: sans-serif;
 }
 
+
+.pfp {
+    border-radius: 50%;
+}
 .bar {
     /*color: rgba(55, 21, 21, 0.9);
     background: rgba(255, 255, 255, 0.25);
@@ -17,7 +21,7 @@ p {
     padding-top: 5px;
     padding-bottom: 5px;*/
     background-color: #118ab2;
-            color: #fff;
+            color: black;
             padding: 10px 20px;
             display: flex;
             align-items: center;
@@ -62,15 +66,21 @@ p {
     
 }
 
-
 a {
-    font-size: 18px; 
+    font-size: 20px;
+    
+}
+
+
+.dash {
+    margin: 2%;
+    padding: 0px;
 }
 
 .flex-container {
     display: flex;
     flex-wrap: wrap;
-    background-color: #06d6a0;
+    background-color: rgb(183, 131, 213);
     justify-content: center;
     border-radius: 25px;
     margin: .5%;
@@ -78,33 +88,12 @@ a {
     
 }
 
-.flex-item {
-    background-color: white;
-    border-radius: 25px;
-    justify-content: center;
-    padding: 11px;
-    width: 300px;
-    height: 500px;
-    border-radius: 25px;
-    margin: .5%;
-    padding: 11px;
-    filter: blur(10px);
-}
-
-.flex-item.unlocked {
-    filter: none;
-}
-
-.class {
-    
+.creators {
     display: flex;
-    flex-direction: row;
-    border-radius: 25px;
-    padding: 5%;
-    width:33%;
+    flex-wrap: wrap;
 }
 
-.dash {
-    margin: 2%;
-    padding: 11px;
+.person {
+    width: 50%;
+    display: flex;
 }

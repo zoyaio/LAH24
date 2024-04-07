@@ -75,3 +75,13 @@ def signup(request):
             messages.success(request, 'Account created successfully.')
             return redirect('login')
     return render(request, 'signup.html')
+
+
+def about(request):
+    return render(request,"about.html" )
+
+def friends(request):
+    return render(request,"friends.html" )
+
+def pets(request):
+    return render(request,"pets.html" )
