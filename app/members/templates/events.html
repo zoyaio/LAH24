@@ -1,16 +1,24 @@
 <!DOCTYPE html>
+{% load static %}
 <html>
     <head>
         <meta charset="UTF-8" />
   <title>Events</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="description" content="" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+  crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""></script>
+    
   <link rel="icon" href="favicon.png">
-        <link rel="stylesheet" href="eventsDesign.css">
+        <link rel="stylesheet" href="{% static 'eventsDesign.css' %}">
         <div class="bar">
             <div class="logo">
                 <!-- Replace 'logo.png' with the path to your logo -->
-                <a href="eureka.html"><img src="EUREKA!.png" alt="Logo" style="height: 70px;"></a>
+                <a href="eureka.html"><img src="{% static 'imgs/EUREKA!.png' %}" alt="Logo" style="height: 70px;"></a>
             </div>
             <ul class="menu">
                 <li><a href="events.html">Find Eurekas</a></li>
@@ -23,23 +31,18 @@
         <div class="eventTitle">
             <h1> Events </h1>
         </div>
-        <div class="map">
-            <h2>Map:</h2>
-            <p>
-                <map style="width:100%">
-                </map>
-            </p>
-        </div>
-
+        <div class="map" id="map" style=" height: 200px; width: 400px;"></div>
+        <!-- <script src="{% static 'map.js' %}"></script> -->
+            
         <script type="text/javascript"> 
             // gets current position
             var position = navigator.geolocation.getCurrentPosition(showPosition); 
 
             // inits map with current position of user
             function showPosition(pos) {
-                var map = L.map('map').setView([0,0], 13);
+                var map = L.map('map').setView([pos.coords.latitude,pos.coords.longitude], 13);
                 // adds tile layer using open street map 
-                L.tileLayer('https://tile.openstreetmap.org/%7Bz%7D/%7Bx%7D/%7By%7D.png', {
+                L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
                     maxZoom: 19,
                     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
                 }).addTo(map);
