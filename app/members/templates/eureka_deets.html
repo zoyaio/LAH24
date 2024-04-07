@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Hello, world!</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="" />
+  <link rel="icon" href="favicon.png">
+   <!-- Make sure you put this AFTER Leaflet's CSS -->
+ crossorigin=""></script>
+</head>
+<style>
+  div {
+      width: 500px;
+      height: 400px;
+      border: 2px solid black;
+      position: relative;
+  }
+
+  video {
+      width: 500px;
+      height: 400px;
+      object-fit: cover;
+  }
+
+  img {
+    width: 500px;
+      height: 400px;
+      object-fit: cover;
+  }
+</style>
+
+<body>
+<!-- <script>
+  navigator.mediaDevices.getUserMedia({video: true})
+</script> -->
+
+<div>
+  <video id="vid"></video>
+</div>
+
+<div>
+  <img id="img" src="" alt="captured image"> 
+</div>
+<br />
+<button id="but" autoplay>
+  Open WebCam
+</button>
+<button id="capture">
+  Capture EUREKA! (´•×•)⊃━☆
+</button>
+<div id="alert" style="opacity: 0;">
+  <p id="alert-mssg"></p>
+</div>
+</body>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  let but = document.getElementById("but");
+  let capture_but = document.getElementById("capture");
+  let video = document.getElementById("vid");
+  let img = document.getElementById("img");
+  let alert_div = document.getElementById("alert");
+  let alert_mssg = document.getElementById("alert-mssg");
+
+  let mediaDevices = navigator.mediaDevices;
+  vid.muted = true;
+  var videoOn = false;
+  but.addEventListener("click", () => {
+      videoOn = !videoOn; 
+      if (videoOn) {
+        video.style.opacity = 100;
+      // Accessing the user camera and video.
+      mediaDevices
+          .getUserMedia({
+              video: true
+            })
+          .then((stream) => {
+              // Changing the source of video to current stream.
+              videoOn = true; 
+              video.srcObject = stream;
+              video.addEventListener("loadedmetadata", () => {
+                  video.play();
+              });
+          })
+          .catch(alert);
+        }
+        else {
+          // video.src object = nothing?
+          video.style.opacity = 0;
+        }
+  });
+
+capture_but.addEventListener("click", () => {
+  console.log("clicked!");
+  mediaDevices
+          .getUserMedia({
+              video: true
+            })
+          .then((stream) => {
+            const track = stream.getVideoTracks()[0];
+            let imageCapture = new ImageCapture(track);
+            imageCapture.takePhoto()
+            .then((photo) =>{
+              console.log(photo); 
+              var imageUrl = URL.createObjectURL(photo);
+              img.src = imageUrl;
+              videoOn = false;
+            })
+          })
+          .catch(alert);
+  var position = navigator.geolocation.getCurrentPosition(validate_eureka); 
+  // redirect to
+})
+
+function validate_eureka(pos) {
+  // the eureka data
+  var eu_lat = 37.4107685; // from Juniper Aspiration Dome: @37.4107685,-122.1134907
+  var eu_long = -122.1134907;
+  var eu_start_date;
+  // var eu_start_date = new Date(None).getTime(); 
+  var eu_end_date;
+  // var eu_end_date = new Date(None).getTime(); 
+  var eu_pts;
+  var eu_type;
+
+  const user_lat = pos.coords.latitude;
+  const user_long =   pos.coords.longitude;
+  const user_time =   new Date();  // adjust for timezone?
+  console.log(user_time.toString());
+
+  var degree = 0.1; 
+  console.log([user_lat, user_long]);
+  var alert_message; 
+  // if (((user_lat - degree) <= user_lat <= (user_lat + degree))  ) {
+  if ((((user_lat - degree) <= user_lat) && (user_lat <= (user_lat + degree))) 
+      && ((user_long - degree) <= user_long && user_long <= (user_long + degree)) ) {
+      // and in time range
+      if (user_time >= eu_start_date && user_time <= eu_end_date){
+        alert_message = `nice, you're checked in! you received ${eu_pts} points and boosted your ${eu_type} pet B))`;
+      }
+      else {
+        alert_message = "you're out of time for this EUREKA! :( ";
+      }
+
+    }
+  else {
+    alert_message = "you're not in the right place!";
+  }
+
+  alert_div.style.opacity = 100; 
+  alert_mssg.innerText = alert_message;
+}
+
+function display_alert(message) {
+  alert(message); 
+  window.location = './events';
+}
+
+
+});
+</script>
+  
+</body>
+</html>
