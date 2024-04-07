@@ -1,5 +1,5 @@
 h2 {
-    font-family: Georgia;
+    font-family: sans-serif;
 }
 
 .bar {
@@ -61,11 +61,12 @@ a {
 }
 
 .class {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    border-radius: 25px;
-    padding: 5%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 0;
+        
+    
 }
 
 .map {
@@ -86,10 +87,9 @@ a {
     border-radius: 25px;
     margin: 2%;
     padding: 11px;
-    width: 45%;
+    width: 700px;
     position: absolute;
-    width: 600px;
-    height: 350px;
+    height: inherit;
     top: 100px;
     right: 50px;
 }
@@ -113,3 +113,28 @@ a {
     top: 100px;
     left: 75px;
 }
+
+.table {
+    background-color: lightblue;
+    border-radius: 25px;
+    margin: .5%;
+    padding: 11px;
+    width: 95%;
+}
+
+.table h2, .pets h2, .friends h2, .leader h2 {
+    margin-top: 0;
+}
+
+.table table, .leader table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th, .table td, .leader th, .leader td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+    font-family: sans-serif;
+}
+

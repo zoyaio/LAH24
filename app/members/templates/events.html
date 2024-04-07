@@ -6,15 +6,16 @@
   <title>Events</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="description" content="" />
+  <link rel="stylesheet" href="{% static 'eventsDesign.css' %}">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
   integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
   crossorigin=""/>
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-    crossorigin=""></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+crossorigin=""></script>
     
-  <link rel="icon" href="favicon.png">
-        <link rel="stylesheet" href="{% static 'eventsDesign.css' %}">
+  <!-- <link rel="icon" href="favicon.png"> -->
+        
         <div class="bar">
             <div class="logo">
                 <!-- Replace 'logo.png' with the path to your logo -->
@@ -32,12 +33,11 @@
         </div>
       </head>
       <body>
-        <div class="eventTitle">
-            <h1> Events </h1>
-        </div>
+
+        <div class="class">
         <div class="map" id="map" style=" height: 200px; width: 400px;"></div>
         <!-- <script src="{% static 'map.js' %}"></script> -->
-            
+      </div>    
         <script type="text/javascript"> 
             // gets current position
             var position = navigator.geolocation.getCurrentPosition(showPosition); 
@@ -55,7 +55,7 @@
               var data = JSON.parse("{{eureka_elms|escapejs}}"); 
               console.log(data);
               const markers = []; 
-              for (let i = 0; i < 2; i++) {
+              for (let i = 0; i < 1; i++) {
                 markers[i] = L.marker([data[i].latitude,data[i].longitude]).addTo(map);
               }
               console.log(markers);
@@ -74,24 +74,93 @@
 
 
         <div class="calendar">
-            <h2>Calendar:</h2>
+            <!--<h2>Calendar:</h2>
             <p>
                 <calendar style="width:100%">
                     {% for x in eureka_dict %}
                     
                     <p>{{x.activity_name }} @  {{x.location_name}} ({{x.maps_link}}) </p>
-                    {%endfor%}
+                    {%endfor%}-->
+                    <div class="table"> 
+                        <h2> Eurekas Near You: </h2>
+                            <table style="width:100%">
+                                <tr>
+                                  <th style="width:20%">Name</th>
+                                  <th style="width:20%">Distance</th>
+                                  <th style="width:20%">Type of Eureka</th>
+                                  <th style="width:20%">Start time</th>
+                                  <th style="width:20%">End time</th>
+                                </tr>
+                                <tr>
+                                  <td>name #1</td>
+                                  <td>distance #1</td>
+                                  <td>type #1</td>
+                                  <td>start time #1</td>
+                                  <td>end time #1</td>
+                                </tr>
+                                <tr>
+                                  <td>name #2</td>
+                                  <td>distance #2</td>
+                                  <td>type #2</td>
+                                  <td>start time #2</td>
+                                  <td>end time #2</td>
+                                </tr>
+                                <tr>
+                                    <td>name #2</td>
+                                    <td>distance #2</td>
+                                    <td>type #2</td>
+                                    <td>start time #2</td>
+                                    <td>end time #2</td>
+                                  </tr>
+                                  <tr>
+                                    <td>name #2</td>
+                                    <td>distance #2</td>
+                                    <td>type #2</td>
+                                    <td>start time #2</td>
+                                    <td>end time #2</td>
+                                  </tr>
+                                  <tr>
+                                    <td>name #2</td>
+                                    <td>distance #2</td>
+                                    <td>type #2</td>
+                                    <td>start time #2</td>
+                                    <td>end time #2</td>
+                                  </tr>
+                                  <tr>
+                                    <td>name #2</td>
+                                    <td>distance #2</td>
+                                    <td>type #2</td>
+                                    <td>start time #2</td>
+                                    <td>end time #2</td>
+                                  </tr>
+                                  <tr>
+                                    <td>name #2</td>
+                                    <td>distance #2</td>
+                                    <td>type #2</td>
+                                    <td>start time #2</td>
+                                    <td>end time #2</td>
+                                  </tr>
+                                  <tr>
+                                    <td>name #2</td>
+                                    <td>distance #2</td>
+                                    <td>type #2</td>
+                                    <td>start time #2</td>
+                                    <td>end time #2</td>
+                                  </tr>
+                              </table>
+                        </p>
+                    </div>
+        
+        
                 </calendar>
 
                 
             </p>
+            <div>
+                <h2> At an event? <a href=""> Click here </a> </h2>
+                
+            </div>
         </div>
-        <div class="post">
-            <h2>Post an event:</h2>
-            <p>
-                <post style="width:100%">
-                </post>
-            </p>
-        </div>
+        
       </body>
 </html>
