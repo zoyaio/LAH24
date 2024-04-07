@@ -1,70 +1,35 @@
 <!DOCTYPE html>
-{% load static %}
 <html>
     <head>
-    <meta charset="UTF-8" />
+        <meta charset="UTF-8" />
   <title>Events</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="description" content="" />
   <link rel="icon" href="favicon.png">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-  integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-  crossorigin=""/>
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-    crossorigin=""></script>
-        <link rel="stylesheet" href="{% static 'eventsDesign.css' %}">   
-        <div class="top"> 
-            <h2> Eureka! </h2>
-            <p> ———————————————————————————————————————————————————————— </p>
-            <a href=""> Events</a>
-            <a href=""> Places</a>
-            <a href=""> Pets</a>
-            <a href=""> Friends</a>
-            <a href=""> Events</a>
+        <link rel="stylesheet" href="eventsDesign.css">
+        <div class="bar">
+            <div class="logo">
+                <!-- Replace 'logo.png' with the path to your logo -->
+                <a href="eureka.html"><img src="EUREKA!.png" alt="Logo" style="height: 70px;"></a>
             </div>
+            <ul class="menu">
+                <li><a href="events.html">Find Eurekas</a></li>
+                <li><a href="pets.html">Pets</a></li>
+                <li><a href="#">Friends</a></li>
+            </ul>
+        </div>
       </head>
       <body>
         <div class="eventTitle">
             <h1> Events </h1>
         </div>
-
-        <div class="map" id="map" style=" height: 200px; width: 400px;"></div>
-        <!-- <script src="{% static 'map.js' %}"></script> -->
-        
-        <script type="text/javascript"> 
-            // gets current position
-            var position = navigator.geolocation.getCurrentPosition(showPosition); 
-            
-            // inits map with current position of user
-            function showPosition(pos) {
-                var map = L.map('map').setView([0,0], 13);
-                // adds tile layer using open street map 
-                L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                    maxZoom: 19,
-                    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-                }).addTo(map);
-
-                console.log("{{eureka_elms|escapejs}}");
-              var data = JSON.parse("{{eureka_elms|escapejs}}"); 
-              console.log(data);
-              const markers = []; 
-              for (let i = 0; i < 2; i++) {
-                markers[i] = L.marker([data[i].lat,data[i].long]).addTo(map);
-              }
-              console.log(markers);
-            
-              }
-            
-            
-              // adds a marker
-            // TODOS: highlight the specific marker the user is hovering over + 
-            // have an onclick thing 
-            // have an onclick thing 
-            
-              
-            //   var marker = L.marker([51.5, -0.09]).addTo(map);
-              </script>
+        <div class="map">
+            <h2>Map:</h2>
+            <p>
+                <map style="width:100%">
+                </map>
+            </p>
+        </div>
         <div class="calendar">
             <h2>Calendar:</h2>
             <p>
@@ -72,7 +37,6 @@
                 </calendar>
             </p>
         </div>
-
         <div class="post">
             <h2>Post an event:</h2>
             <p>
