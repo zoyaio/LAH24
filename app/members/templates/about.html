@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html>
+    <head>
+        <meta charset="UTF-8" />
+  <title>Events</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="" />
+  <link rel="icon" href="favicon.png">
+        <link rel="stylesheet" href="{% static 'aboutDesign.css' %}">
+        <div class="bar">
+            <div class="logo">
+                <!-- Replace 'logo.png' with the path to your logo -->
+                <a href="/eureka/"><img src="{% static 'EUREKA!.png' %}" alt="Logo" style="height: 70px;"></a>
+            </div>
+            <ul class="menu">
+              <li><a href="/about">About</a></li>
+                <li><a href="/events">Find Eurekas</a></li>
+                <li><a href="/pets">Pets</a></li>
+                <li><a href="/friends">Friends</a></li>
+                <div>
+                  <a href="/login"><img src="{% static 'pfp.png' %}" style="height:30px; border-radius:50%" ></a>
+                </div>
+            </ul>
+        </div>
+      </head>
+      <body>
+        <div class="dash">
+            <div class="flex-container">
+                <h2>
+                    Mission Statement
+                </h2>
+                <p> With the rapid expansion of technology, individuals have become more and more disconnected with physical society. Eureka aims to reconnect users with their local community in a gamefied application that promotes them to visit "Eurekas!" or local businneses, parks, events, and more. Through the pet and leaderboard system, users are motivated to compete against their friends and other locals to visit the most amount of "Eurekas" each month, supporting local community and promoting economy. </p>
+    
+                </div>
+                <div class="flex-container">
+                    <h2>
+                        the Creators
+                    </h2>
+                    <div class="creators">
+                        <div class="person"> 
+                            <img  height="200", style="border-radius: 50%" src="{% static 'zoya.png' %}">
+                            <p width="50%"> Zoya Brahimzadeh</p>
+                        </div>
+                        <div class="person">
+                        <img  height="200", style="border-radius: 50%" src="{% static 'jin.png' %}">
+                        <p width="50%"> Jin Cho</p>
+                        </div>
+                        <div class="person">
+                        <img  height="200", style="border-radius: 50%" src="{% static 'eric.png' %}">
+                        <p width="50%"> Eric Liang</p>
+                        </div> <div class="person">
+    
+                            <img  height="200", style="border-radius: 50%" src="{% static 'kimmy.png' %}">
+                            <p width="50%"> Kimmy Nguyen</p>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+          </body>
+</html>

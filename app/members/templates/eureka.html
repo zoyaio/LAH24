@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load static %}
 <html>
     <head>
         <meta charset="UTF-8" />
@@ -6,7 +7,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="description" content="" />
   <link rel="icon" href="favicon.png">
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="{% static 'style.css' %}">
         
       </head>
       <body>
@@ -14,12 +15,16 @@
     <div class="bar">
         <div class="logo">
             <!-- Replace 'logo.png' with the path to your logo -->
-            <a href="eureka.html"><img src="EUREKA!.png" alt="Logo" style="height: 70px;"></a>
+            <a href="/eureka/"><img src="{% static 'EUREKA!.png' %}" alt="Logo" style="height: 70px;"></a>
         </div>
         <ul class="menu">
-            <li><a href="events.html">Find Eurekas</a></li>
-            <li><a href="pets.html">Pets</a></li>
-            <li><a href="#">Friends</a></li>
+          <li><a href="/about">About</a></li>
+            <li><a href="/events">Find Eurekas</a></li>
+            <li><a href="/pets">Pets</a></li>
+            <li><a href="/friends">Friends</a></li>
+            <div>
+              <a href="/login"><img src="{% static 'pfp.png' %}" style="height:30px; border-radius:50%" ></a>
+            </div>
         </ul>
     </div>
 
@@ -100,22 +105,32 @@
             </div>
 
 
-            <div class="pets">
-                <h2> Pets: </h2>
-                <div class="flex-container">
-                    <div class="flex-item">
-                        <h2>Pet1</h2>
-                        <img src = "1.png" width="175" height="175", style="border-radius: 25%">
-                        <p>NAME<br>text here</p>
-                    </div>
-                    <div class="flex-item">
-                        <h2>Pet 2</h2>
-                        <img src = "2.png" width="175" height="175", style="border-radius: 25%">
-                        <p>NAME<br>text here</p>
-                    </div>
-                    
-                </div>
-            </div>
+            <div class="pets clickable-div">
+              <h2> Pets: </h2>
+              <div class="flex-container ">
+                  <div class="flex-item">
+                      <h2>Natura</h2>
+                      <img src = "{% static '1.png' %}" width="175" height="175", style="border-radius: 25%">
+                      <p>Unlocked on April 2nd, 2024</p>
+                  </div>
+                  <div class="flex-item">
+                      <h2>Sucra</h2>
+                      <img src = "{% static '2.png' %}" width="175" height="175", style="border-radius: 25%">
+                      <p>Unlocked on April 4th, 2024</p>
+                  </div>
+                  <script>
+                    document.addEventListener("DOMContentLoaded", function() {
+                        const clickableDivs = document.querySelectorAll(".clickable-div");
+                        clickableDivs.forEach(div => {
+                            div.addEventListener("click", function() {
+                                window.location.href = "pets.html"; // Change to the desired HTML file
+                            });
+                        });
+                    });
+                </script>
+                  
+              </div>
+          </div>
 
             <div class="friends">
                 <h2> Friends: </h2>
@@ -163,9 +178,13 @@
                       </tr>
                   </table>
             </div>
-    <footer>
-        <p> Created by: Eric Liang, Zoya Brahimzadeh, Jin Cho, Kimmy Nguyen</p>
-    </footer>
+            <footer>
+              <p> Created by: 
+              <a href = "https://www.linkedin.com/in/zoya-brahimzadeh-b1169b232/" > Zoya Brahimzadeh,</a> 
+              <a href = "https://www.linkedin.com/in/jincho25/" > Jin Cho,</a> 
+              <a href = "https://www.linkedin.com/in/erichliang/" > Eric Liang,</a> 
+              Kimmy Nguyen at LAHVIII</p>
+          </footer>
         </div>
       </body>
 </html>
